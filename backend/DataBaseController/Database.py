@@ -5,7 +5,7 @@ from Model.Place import Place
 
 database_name = "where_to_go"
 database_user_name = "postgres"
-database_user_pass = "123"
+database_user_pass = "1"
 
 
 class Database:

@@ -1,4 +1,4 @@
-import { Card } from "bootstrap-4-react/lib/components";
+import { Card } from "bootstrap-4-react";
 import React from "react";
 
 class Place extends React.Component {
@@ -12,7 +12,7 @@ class Place extends React.Component {
                 <Card.Image src={place.photo_src} top/>
                 <Card.Body>
                     <Card.Title>
-                            {place.name}
+                        {place.name}
                     </Card.Title>
                     <Card.Text>
                         {place.description}
