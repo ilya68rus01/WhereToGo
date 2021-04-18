@@ -1,4 +1,3 @@
-from flask import url_for
 import json
 
 from flask import url_for
@@ -47,7 +46,8 @@ class Places(Resource):
         description = str(args['description'])
         rate = str(args['rate'])
         img_src = str(args['img_src'])
-        place = Place(name, adress, description, rate, img_src)
+        place = Place()
+        place.set_fields(name, adress, description, rate, img_src)
         database_controller.add_place(place)
 
 
@@ -93,7 +93,8 @@ class Login(Resource):
         bday = str(args["bday"])
         user = database_controller.getUserByLogin(login)
         if user is None:
-            user = Person(name, surname, patronymic, bday, login)
+            user = Person()
+            user.set_fields(None, name, surname, patronymic, bday, login)
             user.set_password(password)
             database_controller.insert_person(user)
             user = database_controller.getUserByLogin(login)

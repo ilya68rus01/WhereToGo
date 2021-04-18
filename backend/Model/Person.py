@@ -7,18 +7,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 class Person(UserMixin, json.JSONEncoder):
     def __init__(self,
-                 name=None,
-                 surname=None,
-                 patronymic=None,
-                 bday=None,
-                 login=None,
                  **kwargs):
         super(Person, self).__init__(**kwargs)
-        self.name = str(name)
-        self.surname = str(surname)
-        self.patronymic = str(patronymic)
-        self.bday = str(bday)
-        self.login = str(login)
 
     def set_fields(self, id, name, surname, patronymic, bday, login):
         self.id = str(id)
