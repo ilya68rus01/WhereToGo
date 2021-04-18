@@ -4,16 +4,10 @@ from flask import jsonify
 
 
 class Place(json.JSONEncoder):
-    def __init__(self, name, address, description, rate, img_src, id=None, **kwargs):
+    def __init__(self, **kwargs):
         super(Place, self).__init__(**kwargs)
-        self.id = id
-        self.name = str(name)
-        self.address = str(address)
-        self.description = str(description)
-        self.rate = int(rate)
-        self.img_src = str(img_src)
 
-    def set_fields(self, id, name, address, description, rate, img_src, ):
+    def set_fields(self, id, name, address, description, rate, img_src):
         self.id = id
         self.name = str(name)
         self.address = str(address)

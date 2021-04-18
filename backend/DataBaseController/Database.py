@@ -17,7 +17,12 @@ class Database:
         cursor.execute("SELECT * FROM place WHERE place_id=%s;", (place_id))
         row = cursor.fetchone()
         place = Place()
-        place.set_fields(row[0], row[1], row[2], row[3], row[4], row[5])
+        place.set_fields(name=row[1],
+                         address=row[2],
+                         description=row[3],
+                         rate=row[4],
+                         img_src=row[5],
+                         id=row[0])
         return place
 
     def get_all_place(self):
@@ -26,9 +31,14 @@ class Database:
         place_list = list()
         rows = cursor.fetchall()
         for row in rows:
-            p = Place()
-            p.set_fields(row[0], row[1], row[2], row[3], row[4], row[5])
-            place_list.append(p)
+            place = Place()
+            place.set_fields(name=row[1],
+                             address=row[2],
+                             description=row[3],
+                             rate=row[4],
+                             img_src=row[5],
+                             id=row[0])
+            place_list.append(place)
         return place_list
 
     def get_favorite_places(self, person):
