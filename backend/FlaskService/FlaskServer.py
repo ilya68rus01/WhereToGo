@@ -46,8 +46,14 @@ class Places(Resource):
         description = str(args['description'])
         rate = str(args['rate'])
         img_src = str(args['img_src'])
+        print(img_src)
         place = Place()
-        place.set_fields(name, adress, description, rate, img_src)
+        place.set_fields(id=None,
+                         name=name,
+                         address=adress,
+                         description=description,
+                         rate=rate,
+                         img_src=img_src)
         database_controller.add_place(place)
 
 

@@ -4,6 +4,7 @@ import './App.css';
 import Header from "./components/Header";
 import { Container, Row, Button } from "react-bootstrap";
 import AddPlaceModal from "./components/AddPlaceModal";
+import SignInModal from "./components/SignInModal";
 
 function App() {
   const [places, setPlaces] = useState([]);
@@ -26,6 +27,7 @@ function App() {
         <AllPlaces places={places}></AllPlaces>
         <AllPlaces places={places}></AllPlaces>
         <AllPlaces places={places}></AllPlaces>
+
         <div className="addPlaceBtn" style={{position:'fixed', top:'90%', left:'95%'}}>
           <Button success style={{borderRadius:'20px', fontSize:'1.2em'}} data-toggle="modal" data-target="#addPlaceModal" outline light my="2 sm-0" >+</Button>
         </div>
