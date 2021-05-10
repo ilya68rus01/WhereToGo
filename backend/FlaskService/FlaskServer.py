@@ -46,7 +46,6 @@ class Places(Resource):
         description = str(args['description'])
         rate = str(args['rate'])
         img_src = str(args['img_src'])
-        print(img_src)
         place = Place()
         place.set_fields(id=None,
                          name=name,
