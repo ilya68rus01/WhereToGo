@@ -1,5 +1,7 @@
 import React from "react";
+import { BrowserRouter as Router, Redirect, useHistory } from 'react-router-dom'
 import { Button, Modal,Form} from "bootstrap-4-react";
+
 
 export default class AddPlaceModal extends React.Component {
   constructor(props) {
@@ -9,7 +11,8 @@ export default class AddPlaceModal extends React.Component {
       adress:'',
       description:'',
       rate:'',
-      img_src: null
+      img_src: null,
+      redirect: false
     }
   }
 
@@ -25,14 +28,23 @@ export default class AddPlaceModal extends React.Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      //make sure to serialize your JSON body
       body: JSON.stringify(this.state)
     })
+    this.setState({redirect: true})
   }
 
     render() {
+      const { redirect } = this.state
       const {name,adress,description,rate,img_src} = this.state
+      if (redirect) {
+        console.log("work")
         return(
+          <Router>
+            <Redirect to="/" />
+          </Router>
+        )
+      }  
+      return(
         <Modal id="addPlaceModal" fade>
           <Modal.Dialog>
             <Modal.Content>
@@ -64,7 +76,7 @@ export default class AddPlaceModal extends React.Component {
               </Modal.Body>
               <Modal.Footer>
                 <Button  data-dismiss="modal">Cancel</Button>
-                <Button onClick={this.addPlace} primary>Add</Button>
+                <Button onClick={this.addPlace} data-dismiss="modal" primary>Add</Button>
               </Modal.Footer>
             </Modal.Content>
           </Modal.Dialog>
